@@ -15,7 +15,7 @@ public class Playing_Tutorial : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.anyKeyDown || Input.touchCount > 0) {
+		if (Input.anyKeyDown || (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)) {
 			nextTutorialPage ();
 		}
 	}

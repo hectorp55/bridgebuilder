@@ -135,7 +135,7 @@ public class Builder : MonoBehaviour {
 		}
 
 		//Input drops plank
-		if(Input.GetButtonDown("Drop") && animator.GetBool("Holding_Plank")) {
+		if(Input.GetButtonDown("Drop") && animator.GetBool("Holding_Plank") && Time.timeScale != 0) {
 			drop_plank ();
 		}
 
