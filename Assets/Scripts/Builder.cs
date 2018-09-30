@@ -45,9 +45,9 @@ public class Builder : MonoBehaviour {
 
 	//Drops plank from hand and flips player
 	public void drop_plank() {
-		planks.Add(create_plank ());
 		animator.SetBool ("Holding_Plank", false);
 		StartCoroutine(hammerStall());
+		StartCoroutine(plank_to_environment());
 	}
 
 	//Picks up plank from pile and flips player
@@ -58,14 +58,19 @@ public class Builder : MonoBehaviour {
 	}
 
 	public void drop_bigger_plank(Vector3 location) {
-		planks.Add(create_bigger_plank (location));
 		animator.SetBool ("Holding_Plank", false);
 		StartCoroutine(hammerStall());
+		planks.Add(create_bigger_plank (location));
 	}
 
 	//===============================================
 	//Private Members
 	//===============================================
+
+	private IEnumerator plank_to_environment() {
+		yield return new WaitForSeconds(0.5f);
+		planks.Add(create_plank ());
+	}
 
 	//Stalls player for hammer animation
 	private IEnumerator hammerStall() {

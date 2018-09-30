@@ -24,7 +24,7 @@ public class BGMover : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		bgSize = 50;
+		bgSize = 45;
 	}
 	
 	// Update is called once per frame
