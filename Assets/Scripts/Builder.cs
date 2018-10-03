@@ -19,7 +19,6 @@ public class Builder : MonoBehaviour {
 	private Vector3 plank_place;
 	private Vector3 initial_build_location;
 	private Vector3 plank_offset;
-	private int tutorial;
 
 	//===============================================
 	//Public Members

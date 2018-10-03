@@ -7,18 +7,30 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour {
 
 	private SaveGame save;
-	public bool tutorial;
+
+	//Toggle Values
+	public Toggle tutorialToggle;
+
+	//UI Routes
+	public GameObject optionsObject;
+	public GameObject mainTitleObject;
+
+	//=======================================================
+	// Public Functions
+	//=======================================================
 
 	public void playGame() {
 		if(save.getTutorial() == 1) {
 			save.updateTutorial (0);
 			SceneManager.LoadScene ("Tutorial");
+		} else {
+			SceneManager.LoadScene ("main");
 		}
-		SceneManager.LoadScene ("main");
 	}
 
 	public void openOptions() {
-		SceneManager.LoadScene ("Options");
+		switchUI(mainTitleObject, optionsObject);
+		tutorialToggle.isOn = save.getTutorial() == 1;
 	}
 
 	public void openShop() {
@@ -26,26 +38,38 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	public void returnHome() {
+		switchUI(optionsObject, mainTitleObject);
+	}
+
+	public void navigateHome() {
 		SceneManager.LoadScene ("Title");
 	}
+
+	public void updateTutorial(bool value) {
+		int tutValue = 0;
+		if (value) tutValue = 1; 
+		save.updateTutorial(tutValue);
+	}
+
+	//=======================================================
+	// Game Methods
+	//=======================================================
 
 	// Use this for initialization
 	void Start () {
 		save = GetComponent<SaveGame> ();
-		if (save.getTutorial () == 1) {
-			tutorial = true;
-		} else {
-			tutorial = false;
-		}
-			
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (tutorial) {
-			save.updateTutorial (1);
-		} else {
-			save.updateTutorial (0);
-		}
+	}
+
+	//=======================================================
+	// Private Functions
+	//=======================================================
+
+	private void switchUI(GameObject uiObjectOff, GameObject uiObjectOn) {
+		uiObjectOff.SetActive(false);
+		uiObjectOn.SetActive(true);
 	}
 }
