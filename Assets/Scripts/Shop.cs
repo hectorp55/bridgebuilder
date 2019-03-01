@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour {
 
-	public List<GameObject> characters;
-
+	public GameObject[] characters;
 	private int currentChar;
-	private SaveGame save;
+	private Vector3 activeShopPosition = new Vector3(-0.1442547f, 0.1740009f, 0f);
 
 	public void rightArrow() {
 		characters [currentChar].SetActive (false);
-		if (currentChar + 1 >= characters.Count) {
+		if (currentChar + 1 >= characters.Length) {
 			currentChar = 0;
 		} else {
 			currentChar++;
@@ -22,7 +21,7 @@ public class Shop : MonoBehaviour {
 	public void leftArrow() {
 		characters [currentChar].SetActive (false);
 		if (currentChar - 1 < 0) {
-			currentChar = characters.Count - 1;
+			currentChar = characters.Length - 1;
 		} else {
 			currentChar--;
 		}
@@ -30,7 +29,8 @@ public class Shop : MonoBehaviour {
 	}
 
 	public void selectCharacter() {
-		save.updateCharacter (currentChar);
+		string characterName = characters[currentChar].name;
+		SaveGame.updateCharacterSkin (characterName);
 	}
 
 	public void unlockCharacter() {
@@ -38,8 +38,17 @@ public class Shop : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		currentChar = 0;
-		characters [currentChar].SetActive (true);
-		save = GetComponent<SaveGame> ();
+		Object[] characterObjs = Resources.LoadAll(Labels.CharacterFolder);
+		characters = new GameObject[characterObjs.Length];
+		string currentCharacterName = SaveGame.getCharacterName();
+		for(int i = 0; i<characterObjs.Length; i++) {
+			characters[i] = Instantiate((GameObject)characterObjs[i], activeShopPosition, Quaternion.identity);
+			if(characters[i].name == currentCharacterName) {
+				currentChar = i;
+			}
+			else {
+				characters[i].SetActive(false);
+			}
+		}
 	}
 }

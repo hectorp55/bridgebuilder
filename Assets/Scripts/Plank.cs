@@ -23,6 +23,7 @@ public class Plank : MonoBehaviour {
 	private RaycastHit check_hit;
 	private GameObject builder;
 	private Builder control;
+	private SpriteRenderer sprite_rend;
 
 
 	//----------------------------------------------------------------------------------
@@ -40,6 +41,8 @@ public class Plank : MonoBehaviour {
 		plank_collider = GetComponent<Collider>();
 		plank_renderer = GetComponent<Renderer>();
 		plank_rigid = GetComponent<Rigidbody> ();
+		sprite_rend = GetComponent<SpriteRenderer>();
+		// sprite_rend.sprite = CharacterLoad.LoadCharacter().plankSkin;
 		plank_collider_length = plank_collider.bounds.size.x;
 		plank_height = plank_renderer.bounds.size.y;
 		plank_length = plank_renderer.bounds.size.x;

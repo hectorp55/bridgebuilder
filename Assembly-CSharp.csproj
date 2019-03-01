@@ -51,11 +51,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AudioAwaker.cs" />
      <Compile Include="Assets\Scripts\Beam.cs" />
      <Compile Include="Assets\Scripts\BGMover.cs" />
      <Compile Include="Assets\Scripts\Bolt.cs" />
      <Compile Include="Assets\Scripts\Builder.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
+     <Compile Include="Assets\Scripts\CharacterLoad.cs" />
+     <Compile Include="Assets\Scripts\CharacterSkin.cs" />
+     <Compile Include="Assets\Scripts\DontDestroy.cs" />
      <Compile Include="Assets\Scripts\Game_Manager.cs" />
      <Compile Include="Assets\Scripts\Ground.cs" />
      <Compile Include="Assets\Scripts\GUI\Display_Main.cs" />
@@ -63,6 +67,7 @@
      <Compile Include="Assets\Scripts\GUI\Retry.cs" />
      <Compile Include="Assets\Scripts\GUI\UpdateMemory.cs" />
      <Compile Include="Assets\Scripts\IceBlock.cs" />
+     <Compile Include="Assets\Scripts\Labels.cs" />
      <Compile Include="Assets\Scripts\Marker.cs" />
      <Compile Include="Assets\Scripts\Plank.cs" />
      <Compile Include="Assets\Scripts\Planks_Animation.cs" />

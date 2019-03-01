@@ -17,7 +17,6 @@ public class Game_Manager : MonoBehaviour {
 	private List<GameObject> ice;
 	private Builder builder;
 	private BGMover bgMover;
-	private SaveGame save;
 	private float max_planks;
 	public float plank_length;
 	public float ground_length;
@@ -28,9 +27,9 @@ public class Game_Manager : MonoBehaviour {
 	//===============================================
 
 	public void loser() {
-		save.updateLastScore (score);
-		save.updateBoltCount (boltCount);
-		save.updateHighScore (score);
+		SaveGame.updateLastScore (score);
+		SaveGame.updateBoltCount (boltCount);
+		SaveGame.updateHighScore (score);
 		SceneManager.LoadScene ("Retry");
 	}
 
@@ -49,6 +48,11 @@ public class Game_Manager : MonoBehaviour {
 
 	public void decrease_stack() {
 		planks_in_stack--;
+	}
+
+	public void startMovingPlayer() {
+		Time.timeScale = 1;
+		builder.animator.SetTrigger("GameStart");
 	}
 
 	//===============================================
@@ -84,6 +88,9 @@ public class Game_Manager : MonoBehaviour {
 	//===============================================
 	//Game Function
 	//===============================================
+	void Awake() {
+		
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -94,12 +101,10 @@ public class Game_Manager : MonoBehaviour {
 		plank_length = 5.15f;
 		ground_length = initial_ground.GetComponent<Collider> ().bounds.size.x;
 		builder = GameObject.FindGameObjectWithTag ("Player").GetComponent<Builder>();
-		save = GetComponent<SaveGame> ();
-
 
 		ground_shift ();
-
 		planks_in_stack = Mathf.CeilToInt(max_planks + plank_buffer);
+		boltCount = SaveGame.getBoltCount();
 	}
 	
 	// Update is called once per frame

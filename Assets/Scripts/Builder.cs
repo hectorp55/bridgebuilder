@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Builder : MonoBehaviour {
 
@@ -8,10 +9,10 @@ public class Builder : MonoBehaviour {
 	public Vector3 curr_vel;
 	public GameObject plank_prefab;
 	public GameObject bigger_plank_prefab;
+	public Animator animator;
 	public bool continue_move;
 
 	private Game_Manager manager;
-	private Animator animator;
 	private Rigidbody builder_body;
 	private Collider builder_coll;
 	private float speed;
@@ -19,6 +20,8 @@ public class Builder : MonoBehaviour {
 	private Vector3 plank_place;
 	private Vector3 initial_build_location;
 	private Vector3 plank_offset;
+	private SpriteRenderer sprite_render;
+	private bool playerHasLost = false;
 
 	//===============================================
 	//Public Members
@@ -35,6 +38,7 @@ public class Builder : MonoBehaviour {
 	}
 
 	public void fallPlayer() {
+		playerHasLost = true;
 		Destroy (builder_coll);
 		curr_vel = new Vector3 (0f, -1f, 0f);
 		foreach (var plank in planks) {
@@ -102,17 +106,20 @@ public class Builder : MonoBehaviour {
 	//===============================================
 	void Awake() {
 		builder_body = GetComponent<Rigidbody> ();
+		sprite_render = GetComponent<SpriteRenderer>();
 		animator = GetComponent<Animator> ();
 		builder_coll = GetComponent<Collider> ();
 		planks = new List<GameObject> ();
 		plank_offset = new Vector3 (3.0f, -1.95f, 0f);
 
 		//Initial Speed and velocity
-		speed = 1;
+		speed = 0;
 		curr_vel = Vector3.right;
+		Time.timeScale = 0;
 
 		//Start holding a plank
 		animator.SetBool ("Holding_Plank", true);
+		// sprite_render.sprite = CharacterLoad.LoadCharacter().playerSkin;
 	}
 
 	void Start () {
@@ -135,13 +142,17 @@ public class Builder : MonoBehaviour {
 		}
 
 		//Input drops plank
-		if(Input.GetButtonDown("Drop") && animator.GetBool("Holding_Plank") && Time.timeScale != 0) {
+		if(Input.GetButtonDown("Drop") && animator.GetBool("Holding_Plank") && Time.timeScale != 0 && !playerHasLost) {
 			drop_plank ();
 		}
 
 		//Input drops plank
-		if(Input.touchCount > 0 && animator.GetBool("Holding_Plank") && Time.timeScale != 0) {
-			drop_plank ();
+		foreach(Touch touch in Input.touches) {
+			if (!EventSystem.current.IsPointerOverGameObject(touch.fingerId) && touch.phase == TouchPhase.Began) {
+				if(animator.GetBool("Holding_Plank") && Time.timeScale != 0 && !playerHasLost) {
+					drop_plank ();
+				}
+			}
 		}
 	}
 		

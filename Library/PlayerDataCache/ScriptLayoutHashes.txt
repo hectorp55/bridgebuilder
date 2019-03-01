@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-/Users/HectorP55/Documents/GooglePlay/Bridge-Builder/Builds/BridgeBuilder3.2.3.apk
+/Users/HectorP55/Documents/GooglePlay/Bridge-Builder/Builds/BridgeBuilder3.2.8.apk
 SceneListBegin?
 Assets/Scenes/Title.unity
 Assets/Scenes/main.unity
@@ -97,6 +97,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 92d7a83ea3c7404e484f3b2eed421855 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 92d7a83ea3c7404e484f3b2eed421855 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Labels
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Plank
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -124,8 +125,9 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.UpdateMemory
 84dff3d0deba3672e9a2d678c75ab0be Assembly-CSharp.dll:.Ground
 c34a8ac60af11766e07ac05456130fa4 Assembly-CSharp.dll:.Bolt
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DontDestroy
 f7c8aebe773f18a19ab7e124ab92c58a Assembly-CSharp.dll:.Retry
-ca6d062f047024cd34890938c48edbc0 Assembly-CSharp.dll:.Builder
+a146410f161cea9217c313d3af0ce279 Assembly-CSharp.dll:.Builder
 985cd2276b9b9d13977cab9de0fb94ac Assembly-CSharp.dll:.Shop
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -162,8 +164,9 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 de400e2cb6941573ad8fe0477bf55ac0 Assembly-CSharp.dll:.Planks_Animation
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 67af30bd7b9ed7b30f32155f4f1f0d54 Assembly-CSharp.dll:.BGMover
+1b3320119f2128625758ab4965f4455e Assembly-CSharp.dll:.AudioAwaker
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CameraMovement
-9795b8e4413fa6c87701e2e38852bb09 Assembly-CSharp.dll:.Display_Main
+3ea03ae8fc21ea74bf0082e6c9d0872d Assembly-CSharp.dll:.Display_Main
 08a3bd744565551dd9a24886b46ab673 Assembly-CSharp.dll:.MainMenu
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.IceBlock
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TitleClouds

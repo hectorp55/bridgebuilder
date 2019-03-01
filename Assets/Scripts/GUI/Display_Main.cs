@@ -11,6 +11,7 @@ public class Display_Main : MonoBehaviour {
 	public Button play;
 	public Button pause;
 	public Button exit;
+	public Button startButton;
 
 	private Game_Manager manager;
 
@@ -32,6 +33,15 @@ public class Display_Main : MonoBehaviour {
 		Time.timeScale = 1;
 		manager.loser ();
 	}
+
+	public void startGame() {
+		startButton.gameObject.SetActive(false);
+		manager.startMovingPlayer();
+	}
+
+	//===============================================
+	//Game Function
+	//===============================================
 
 	// Use this for initialization
 	void Start () {

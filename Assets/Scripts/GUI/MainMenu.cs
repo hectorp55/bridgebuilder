@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-	private SaveGame save;
-
 	//Toggle Values
 	public Toggle tutorialToggle;
 
@@ -20,8 +18,8 @@ public class MainMenu : MonoBehaviour {
 	//=======================================================
 
 	public void playGame() {
-		if(save.getTutorial() == 1) {
-			save.updateTutorial (0);
+		if(SaveGame.getTutorial() == 1) {
+			SaveGame.updateTutorial (0);
 			SceneManager.LoadScene ("Tutorial");
 		} else {
 			SceneManager.LoadScene ("main");
@@ -30,7 +28,7 @@ public class MainMenu : MonoBehaviour {
 
 	public void openOptions() {
 		switchUI(mainTitleObject, optionsObject);
-		tutorialToggle.isOn = save.getTutorial() == 1;
+		tutorialToggle.isOn = SaveGame.getTutorial() == 1;
 	}
 
 	public void openShop() {
@@ -48,7 +46,7 @@ public class MainMenu : MonoBehaviour {
 	public void updateTutorial(bool value) {
 		int tutValue = 0;
 		if (value) tutValue = 1; 
-		save.updateTutorial(tutValue);
+		SaveGame.updateTutorial(tutValue);
 	}
 
 	//=======================================================
@@ -57,7 +55,7 @@ public class MainMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		save = GetComponent<SaveGame> ();
+		
 	}
 	
 	// Update is called once per frame
